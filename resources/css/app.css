@@ -1,0 +1,183 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* Базовый цвет текста */
+body {
+    color: #171717;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+    color: #0a0a0a;
+}
+
+a {
+    color: #4f46e5;
+}
+
+a:hover {
+    color: #4338ca;
+}
+
+/* === ТОЧЕЧНОЕ ИСПРАВЛЕНИЕ ЦВЕТА МЕНЮ (не трогает кнопки) === */
+
+/* Базовый цвет текста пунктов меню - темно-серый */
+[data-flux-sidebar-item],
+[data-flux-navbar-item] {
+    color: #262626 !important; /* zinc-800 */
+}
+
+/* Цвет при наведении и для активного пункта - черный + легкий фон */
+[data-flux-sidebar-item]:hover,
+[data-flux-navbar-item]:hover,
+[data-flux-sidebar-item][data-current="true"],
+[data-flux-navbar-item][data-current="true"] {
+    color: #0a0a0a !important; /* zinc-950 */
+    background-color: #f5f5f5 !important; /* zinc-100 */
+}
+
+/* === СТРАНИЦЫ АВТОРИЗАЦИИ (вход, регистрация, восстановление) === */
+
+/* Заголовки и подзаголовки */
+flux\:heading,
+[data-flux-heading] {
+    color: #171717 !important;
+}
+
+flux\:subheading,
+[data-flux-subheading] {
+    color: #525252 !important;
+}
+
+/* Label в input и checkbox */
+flux\:input label,
+[data-flux-input] label,
+flux\:checkbox label,
+[data-flux-checkbox] label,
+[data-flux-label] {
+    color: #171717 !important;
+}
+
+/* Текст внутри input */
+input,
+textarea,
+select {
+    color: #171717 !important;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: #a3a3a3 !important;
+}
+
+/* Ссылки в auth-формах */
+flux\:link,
+[data-flux-link] {
+    color: #4f46e5 !important;
+}
+
+/* Нижний текст "Don't have an account?" */
+.text-zinc-600 {
+    color: #525252 !important;
+}
+
+/* === ИМЯ И EMAIL ПОЛЬЗОВАТЕЛЯ В САЙДБАРЕ === */
+
+/* Имя и email в выпадающем меню профиля */
+flux\:heading,
+[data-flux-heading] {
+    color: #171717 !important;
+}
+
+flux\:text,
+[data-flux-text] {
+    color: #525252 !important;
+}
+
+/* Имя в sidebar.profile */
+[data-flux-sidebar-profile] {
+    color: #171717 !important;
+}
+
+/* Элементы внутри меню пользователя */
+flux\:menu *,
+[data-flux-menu] * {
+    color: #171717 !important;
+}
+/* === КНОПКА ПРОФИЛЯ В ШАПКЕ И САЙДБАРЕ === */
+
+/* Имя в sidebar.profile (кнопка профиля) */
+[data-flux-sidebar-profile] *,
+[data-flux-profile] * {
+    color: #171717 !important;
+}
+
+/* Выпадающее меню профиля */
+[data-flux-dropdown] flux\:heading,
+[data-flux-dropdown] [data-flux-heading] {
+    color: #171717 !important;
+}
+
+[data-flux-dropdown] flux\:text,
+[data-flux-dropdown] [data-flux-text] {
+    color: #525252 !important;
+}
+
+/* Пункты меню (Settings, Log out) */
+[data-flux-menu-item],
+[data-flux-menu-item] * {
+    color: #171717 !important;
+}
+
+[data-flux-menu-item]:hover {
+    background-color: #f5f5f5 !important;
+}
